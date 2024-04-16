@@ -52,7 +52,7 @@ namespace C_App7
             Person person = new Person();
             
             //データセット
-            person.SetData(textBoxName.Text, textBoxMail.Text,textBoxAddress.Text,comboBox.Text);
+            person.SetData(textBoxName.Text, textBoxMail.Text,textBoxAddress.Text,comboBox.Text, GetCheckBoxGroup());
             
             //リストにインスタンス追加
             listPerson.Add(person);
@@ -67,6 +67,23 @@ namespace C_App7
                 comboBox.Items.Add (company);
             }
         }
+
+
+        private List<Person.GroupType> GetCheckBoxGroup()
+        {
+            List<Person.GroupType> listGroup = new List<Person.GroupType>();
+
+            if (checkWork.Checked) listGroup.Add(Person.GroupType.仕事);
+            if (checkClinic.Checked) listGroup.Add(Person.GroupType.病院);
+            if (checkStore.Checked) listGroup.Add(Person.GroupType.お店);
+            if (checkOther.Checked) listGroup.Add(Person.GroupType.その他);
+
+            return listGroup;
+        }
+
+
+
+
 
     }
 }
