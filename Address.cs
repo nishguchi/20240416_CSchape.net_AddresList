@@ -24,7 +24,7 @@ namespace C_App7
             dataGridViewAll.DataSource = listPerson;
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+/*        private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
 
         }
@@ -32,7 +32,13 @@ namespace C_App7
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
 
+
         }
+
+        private void dataGridViewAll_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }*/
 
         private void EndButton_Click(object sender, EventArgs e)
         {
@@ -50,12 +56,15 @@ namespace C_App7
             //ボタン押下毎
             //住所を入れるインスタンス（オブジェクト）生成
             Person person = new Person();
-            
+
             //データセット
+            //チェックリスト列挙メソッドGetCheckBoxGroup()
             person.SetData(textBoxName.Text, textBoxMail.Text,textBoxAddress.Text,comboBox.Text, GetCheckBoxGroup());
             
             //リストにインスタンス追加
             listPerson.Add(person);
+
+            ClearInputControl();
 
         }
 
@@ -81,8 +90,34 @@ namespace C_App7
             return listGroup;
         }
 
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            //更新ボタン押下
+            
 
+        }
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            //削除ボタン押下
+             dataGridViewAll.Rows.Remove(dataGridViewAll.CurrentRow);
+        }
 
+  
+
+        private void ClearInputControl()
+        {
+            textBoxName.Clear();
+            textBoxMail.Clear();
+            textBoxAddress.Clear();
+
+            comboBox.Text = "";
+
+            checkWork.Checked = false;
+            checkClinic.Checked = false;
+            checkStore.Checked = false;
+            checkOther.Checked = false;
+
+        }
 
 
     }
