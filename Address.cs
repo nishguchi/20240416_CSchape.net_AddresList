@@ -24,21 +24,25 @@ namespace C_App7
             dataGridViewAll.DataSource = listPerson;
         }
 
-/*        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
+        /*        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+                {
 
-        }
+                }
 
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
-        {
+                private void checkBox4_CheckedChanged(object sender, EventArgs e)
+                {
 
 
-        }
+                }
 
-        private void dataGridViewAll_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+                private void dataGridViewAll_Click(object sender, DataGridViewCellEventArgs e)
+                {
 
-        }*/
+                }
+         
+         */
+
+
 
         private void EndButton_Click(object sender, EventArgs e)
         {
@@ -119,6 +123,37 @@ namespace C_App7
 
         }
 
+        private void dataGridViewAll_Click(object sender, EventArgs e)
+        {
+            Person selectPerson = listPerson[dataGridViewAll.CurrentRow.Index];
+            textBoxName.Text = selectPerson.Name;
+            textBoxMail.Text = selectPerson.Mail;
+            textBoxAddress.Text = selectPerson.Address;
+            comboBox.Text = selectPerson.Company;
 
+
+            foreach (Person.GroupType groupType in selectPerson.ListGroup)
+            {
+                switch (groupType)
+                {
+                    case Person.GroupType.仕事:
+                        checkWork.Checked = true;
+                    break;
+
+                    case Person.GroupType.お店:
+                        checkStore.Checked = true;
+                    break;
+
+                    case Person.GroupType.病院:
+                        checkClinic.Checked = true;
+                    break;
+                    case Person.GroupType.その他:
+                        checkOther.Checked = true;
+                    break;
+                }
+            }
+
+
+        }
     }
 }
